@@ -12,4 +12,8 @@ Vagrant.configure(2) do |config|
         vb.memory = "2048"
         vb.customize ["modifyvm", :id, "--vram", "128"]
     end
+
+    config.vm.provision "ansible" do |ans|
+        ans.playbook = "minimal-lilydev.yml"
+    end
 end
