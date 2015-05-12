@@ -1,0 +1,30 @@
+# Clone required repositories.  `update: no` means that if a repository is
+# already cloned, Ansible shouldn't attempt to pull new commits into it (this
+# makes rerunning the playbook on an existing LilyDev significantly faster).
+
+- name: Install git
+  apt:
+    name: git
+    state: present
+  sudo: yes
+
+- name: Clone LilyPond sources repository
+  git:
+    repo: git://git.sv.gnu.org/lilypond.git
+    dest: /home/vagrant/lilypond-sources
+    accept_hostkey: yes
+    update: no
+
+- name: Clone LilyPond extras repository
+  git:
+    repo: git://github.com/gperciva/lilypond-extra.git
+    dest: /home/vagrant/lilypond-extra
+    accept_hostkey: yes
+    update: no
+
+- name: Clone git-cl utility
+  git:
+    repo: git://github.com/gperciva/git-cl.git
+    dest: /home/vagrant/bin/git-cl
+    accept_hostkey: yes
+    update: no

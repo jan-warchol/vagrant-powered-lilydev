@@ -2,3 +2,5 @@
   tasks:
     - include: tasks/initialize.yml
     - include: tasks/lxde-desktop.yml
+    - include: tasks/build-dependencies.yml
+    - include: tasks/repositories.yml
