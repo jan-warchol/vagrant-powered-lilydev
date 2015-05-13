@@ -1,0 +1,18 @@
+# Install and configure Lightweight X Desktop Environment
+
+- name: Install LXDE
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - lxde
+    - systemd-shim  # This is needed for GUI shutdown menu to work properly
+  sudo: yes
+
+- name: Fix LXDE GUI shutdown menu
+  lineinfile:
+    line: "session required pam_systemd.so"
+    dest: /etc/pam.d/lxdm
+    state: present
+    create: yes
+  sudo: yes

@@ -1,0 +1,12 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# This Vagrantfile will be shipped with newly created LilyDev box.
+
+Vagrant.configure(2) do |config|
+    config.vm.provider "virtualbox" do |vb|
+        vb.gui = true
+        vb.cpus = 1
+        vb.memory = 768
+    end
+end
