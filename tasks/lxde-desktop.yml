@@ -9,7 +9,7 @@
     - systemd-shim  # This is needed for GUI shutdown menu to work properly
   sudo: yes
 
-- name: Fix GUI shutdown menu
+- name: Fix LXDE GUI shutdown menu
   lineinfile:
     line: "session required pam_systemd.so"
     dest: /etc/pam.d/lxdm

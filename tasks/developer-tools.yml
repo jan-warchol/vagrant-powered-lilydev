@@ -1,0 +1,17 @@
+- name: Install git and other developer tools
+  apt:
+    name: "{{ item }}"
+    state: present
+    install_recommends: no
+  with_items:
+    - geany   # lightweight but reasonably potent text editor
+    - git
+    - gitk
+    - openssh-client
+    - xpdf   # lightweight pdf viewer
+  sudo: yes
+
+- name: Copy bash configuration
+  copy:
+    src: ../files/bashrc.sh
+    dest: /home/vagrant/.bashrc

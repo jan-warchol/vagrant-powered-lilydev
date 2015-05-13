@@ -2,12 +2,6 @@
 # already cloned, Ansible shouldn't attempt to pull new commits into it (this
 # makes rerunning the playbook on an existing LilyDev significantly faster).
 
-- name: Install git
-  apt:
-    name: git
-    state: present
-  sudo: yes
-
 - name: Clone LilyPond sources repository
   git:
     repo: git://git.sv.gnu.org/lilypond.git
