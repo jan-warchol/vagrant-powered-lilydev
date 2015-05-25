@@ -1,0 +1,39 @@
+[alias]
+    # SHORTCUTS
+
+    # --color=always is handy e.g. when redirecting the output to `less -R`
+    b = branch
+    co = checkout
+    ci = commit --verbose
+    d = diff --color=always
+    wd = diff --color=always --word-diff=color
+    find = grep --color=always --line-number --context 3
+    st = status
+
+
+    # PRETTY LOGS
+
+    # basic one-line log, highly recommended
+    ls = !git log --color=always --decorate --graph --date=relative \
+    --format=tformat:'%C(auto)%h%C(reset) -%C(auto)%d%C(reset) %s %C(dim)- %an, %ad%C(reset)'
+
+    # as above, but includes all local and remote branches
+    la = !git ls HEAD --branches --remotes
+
+    # "Long" format - full commit message and a summary of changes
+    ll = !git log --color=always --decorate --graph --stat-graph-width=30 --stat-count=30
+
+
+[color]
+    ui = auto
+
+[diff]
+    # detect renamed files when showing diffs
+    renames = copies
+
+[merge]
+    # in case of merge conflicts also show common ancestor
+    conflictstyle = diff3
+
+[push]
+    default = simple

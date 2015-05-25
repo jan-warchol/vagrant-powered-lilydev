@@ -15,3 +15,8 @@
   copy:
     src: ../files/bashrc.sh
     dest: /home/vagrant/.bashrc
+
+- name: Copy git configuration
+  copy:
+    src: ../files/git-config
+    dest: /home/vagrant/.gitconfig
