@@ -1,7 +1,8 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# This Vagrantfile will be shipped with newly created LilyDev box.
+# This Vagrantfile will be included inside newly created LilyDev box
+# (i.e. these settings will be used as the defaults for new LilyDev VMs):
 
 Vagrant.configure(2) do |config|
     config.vm.provider "virtualbox" do |vb|

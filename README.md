@@ -37,4 +37,4 @@ by running [`install-dev-requirements.sh`](install-dev-requirements.sh) script.
 To build LilyDev Vagrant box, `cd` to this repository and run
 
     vagrant up
-    vagrant package --vagrantfile files/default-vm-settings --output lilydev4.box
+    vagrant package --vagrantfile files/default-lilydev-settings --output lilydev4.box
