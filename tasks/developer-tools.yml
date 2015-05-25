@@ -8,6 +8,7 @@
     - git
     - gitk
     - openssh-client
+    - terminator  # multi-pane terminal emulator
     - xpdf   # lightweight pdf viewer
   sudo: yes
 
@@ -20,3 +21,21 @@
   copy:
     src: ../files/git-config
     dest: /home/vagrant/.gitconfig
+
+- name: Ensure required directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /home/vagrant/.config/terminator
+    - /home/vagrant/Desktop
+
+- name: Copy terminator configuration
+  copy:
+    src: ../files/terminator-config
+    dest: /home/vagrant/.config/terminator/config
+
+- name: Create shortcuts on desktop
+  copy:
+    src: ../files/Terminal.desktop
+    dest: /home/vagrant/Desktop/Terminal.desktop

@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Terminal
+Exec=terminator
+Icon=terminator
+Type=Application
