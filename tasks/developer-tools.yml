@@ -30,6 +30,7 @@
     - /home/vagrant/.config/terminator
     - /home/vagrant/Desktop
     - /home/vagrant/.config/pcmanfm/LXDE
+    - /home/vagrant/.local/share/applications
 
 - name: Copy terminator configuration
   copy:
@@ -40,6 +41,11 @@
   copy:
     src: ../files/Terminal.desktop
     dest: /home/vagrant/Desktop/Terminal.desktop
+
+- name: Set default applications for certain filetypes
+  copy:
+    src: ../files/mimeapps.list
+    dest: /home/vagrant/.local/share/applications/mimeapps.list
 
 - name: Download a Lily Pond wallpaper
   get_url:

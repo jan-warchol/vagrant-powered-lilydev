@@ -1,0 +1,5 @@
+[Default Applications]
+application/x-shellscript=geany.desktop
+text/plain=geany.desktop
+text/x-python=geany.desktop
+text/x-scheme=geany.desktop
