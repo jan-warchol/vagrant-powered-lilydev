@@ -29,6 +29,7 @@
   with_items:
     - /home/vagrant/.config/terminator
     - /home/vagrant/Desktop
+    - /home/vagrant/.config/pcmanfm/LXDE
 
 - name: Copy terminator configuration
   copy:
@@ -39,3 +40,17 @@
   copy:
     src: ../files/Terminal.desktop
     dest: /home/vagrant/Desktop/Terminal.desktop
+
+- name: Download a Lily Pond wallpaper
+  get_url:
+    url: http://upload.wikimedia.org/wikipedia/commons/a/a7/Lily_Pond_%287396038174%29.jpg
+    dest: /home/vagrant/.lily-wallpaper
+
+- name: Set the wallpaper
+  copy:
+    content: |
+      [*]
+      wallpaper=/home/vagrant/.lily-wallpaper
+      wallpaper_mode=fit
+      wallpaper_common=1
+    dest: /home/vagrant/.config/pcmanfm/LXDE/desktop-items-0.conf
