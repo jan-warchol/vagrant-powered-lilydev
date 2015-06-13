@@ -1,0 +1,39 @@
+# Reduce box size by removing unnecessary stuff.
+# Note that any task which removes files from the VM requires running
+# "Zero out free disk space" handler to make the files really disappear.
+
+- name: Remove unnecessary APT packages
+  apt:
+    name: "{{ item }}"
+    state: absent
+    purge: yes
+  with_items:
+    - byobu
+    - xterm
+    - juju   # cloud orchestration tool from Canonical
+    - juju-core
+  sudo: yes
+  notify:
+    - Zero out free disk space
+
+# According to http://unix.stackexchange.com/questions/180400/
+# removing these files (~100 MB!) should have no bad side effects.
+- name: Remove some unnecessary documentation
+  file:
+    name: /usr/share/doc/texlive-doc
+    state: absent
+  sudo: yes
+  notify:
+    - Zero out free disk space
+
+- name: Clean APT cache
+  shell: >
+    du --summarize /var/cache/apt/archives/ | cut -f1;
+    apt-get clean
+  register: cache_size_before_cleaning
+  # Only trigger zeroing free space if there were more than
+  # 1000 KB of archives to remove
+  changed_when: cache_size_before_cleaning.stdout|int > 1000
+  sudo: yes
+  notify:
+    - Zero out free disk space

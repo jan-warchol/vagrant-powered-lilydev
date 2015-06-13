@@ -1,7 +1,11 @@
 - hosts: all
+  gather_facts: no  # save a couple seconds with each run
   tasks:
     - include: tasks/initialize.yml
     - include: tasks/lxde-desktop.yml
     - include: tasks/build-dependencies.yml
     - include: tasks/developer-tools.yml
     - include: tasks/repositories.yml
+    - include: tasks/cleanup.yml
+  handlers:
+    - include: tasks/optimize-disk-image.yml

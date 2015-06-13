@@ -1,0 +1,13 @@
+# When you delete files on a virtual drive, they are removed from the filesystem
+# but their contents remain on the disk image (making the image file bigger than
+# necessary).  To completely remove files and shrink the image, we overwrite all
+# free space on the virtual drive with zeroes.  See
+# http://serverfault.com/questions/677021/what-is-dd-if-dev-zero-of-empty-bs-1m
+
+- name: Zero out free disk space
+  # write zeroes to a temporary file until it fills all available space
+  shell: >
+    dd if=/dev/zero of=/AN_EMPTY_FILE bs=1M;
+    rm -f /AN_EMPTY_FILE
+  sudo: yes
+
