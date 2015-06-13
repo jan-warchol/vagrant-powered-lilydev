@@ -16,3 +16,19 @@
     state: present
     create: yes
   sudo: yes
+
+- name: Ensure system users don't appear on login screen
+  lineinfile:
+    dest: /etc/lxdm/default.conf
+    regexp: black
+    line: black=syslog usbmux
+    follow: yes
+  sudo: yes
+
+- name: Enable autologin for vagrant user
+  lineinfile:
+    dest: /etc/lxdm/default.conf
+    regexp: autologin
+    line: autologin=vagrant
+    follow: yes
+  sudo: yes
