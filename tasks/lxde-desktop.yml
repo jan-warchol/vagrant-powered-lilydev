@@ -32,3 +32,10 @@
     line: autologin={{ user_name }}
     follow: yes
   sudo: yes
+
+- name: Ensure default user belongs to sudo group
+  user:
+    name: "{{ user_name }}"
+    groups: sudo
+    append: yes
+  sudo: yes
