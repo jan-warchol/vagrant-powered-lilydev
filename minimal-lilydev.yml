@@ -1,5 +1,8 @@
 - hosts: all
   gather_facts: no  # save a couple seconds with each run
+  vars:
+    user_name: vagrant
+    user_home: /home/vagrant/
   tasks:
     - include: tasks/initialize.yml
     - include: tasks/lxde-desktop.yml

@@ -5,20 +5,20 @@
 - name: Clone LilyPond sources repository
   git:
     repo: git://git.sv.gnu.org/lilypond.git
-    dest: /home/vagrant/lilypond-sources
+    dest: "{{ user_home }}/lilypond-sources"
     accept_hostkey: yes
     update: no
 
 - name: Clone LilyPond extras repository
   git:
     repo: git://github.com/gperciva/lilypond-extra.git
-    dest: /home/vagrant/lilypond-extra
+    dest: "{{ user_home }}/lilypond-extra"
     accept_hostkey: yes
     update: no
 
 - name: Clone git-cl utility
   git:
     repo: git://github.com/gperciva/git-cl.git
-    dest: /home/vagrant/bin/git-cl
+    dest: "{{ user_home }}/bin/git-cl"
     accept_hostkey: yes
     update: no

@@ -25,10 +25,10 @@
     follow: yes
   sudo: yes
 
-- name: Enable autologin for vagrant user
+- name: Enable autologin for default user
   lineinfile:
     dest: /etc/lxdm/default.conf
     regexp: autologin
-    line: autologin=vagrant
+    line: autologin={{ user_name }}
     follow: yes
   sudo: yes

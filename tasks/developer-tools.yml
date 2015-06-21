@@ -15,48 +15,48 @@
 - name: Copy bash configuration
   copy:
     src: ../files/bashrc.sh
-    dest: /home/vagrant/.bashrc
+    dest: "{{ user_home }}/.bashrc"
 
 - name: Copy git configuration
   copy:
     src: ../files/git-config
-    dest: /home/vagrant/.gitconfig
+    dest: "{{ user_home }}/.gitconfig"
 
 - name: Ensure required directories exist
   file:
     path: "{{ item }}"
     state: directory
   with_items:
-    - /home/vagrant/.config/terminator
-    - /home/vagrant/Desktop
-    - /home/vagrant/.config/pcmanfm/LXDE
-    - /home/vagrant/.local/share/applications
+    - "{{ user_home }}/.config/terminator"
+    - "{{ user_home }}/Desktop"
+    - "{{ user_home }}/.config/pcmanfm/LXDE"
+    - "{{ user_home }}/.local/share/applications"
 
 - name: Copy terminator configuration
   copy:
     src: ../files/terminator-config
-    dest: /home/vagrant/.config/terminator/config
+    dest: "{{ user_home }}/.config/terminator/config"
 
 - name: Create shortcuts on desktop
   copy:
     src: ../files/Terminal.desktop
-    dest: /home/vagrant/Desktop/Terminal.desktop
+    dest: "{{ user_home }}/Desktop/Terminal.desktop"
 
 - name: Set default applications for certain filetypes
   copy:
     src: ../files/mimeapps.list
-    dest: /home/vagrant/.local/share/applications/mimeapps.list
+    dest: "{{ user_home }}/.local/share/applications/mimeapps.list"
 
 - name: Download a Lily Pond wallpaper
   get_url:
     url: http://upload.wikimedia.org/wikipedia/commons/a/a7/Lily_Pond_%287396038174%29.jpg
-    dest: /home/vagrant/.lily-wallpaper
+    dest: "{{ user_home }}/.lily-wallpaper"
 
 - name: Set the wallpaper
   copy:
     content: |
       [*]
-      wallpaper=/home/vagrant/.lily-wallpaper
+      wallpaper={{ user_home }}/.lily-wallpaper
       wallpaper_mode=fit
       wallpaper_common=1
-    dest: /home/vagrant/.config/pcmanfm/LXDE/desktop-items-0.conf
+    dest: "{{ user_home }}/.config/pcmanfm/LXDE/desktop-items-0.conf"
